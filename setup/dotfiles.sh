@@ -4,7 +4,9 @@
 
 gitDir=$HOME/git/dotfiles
 backupDir=$HOME/work/backup/dotfiles
-swapFileDir=$HOME/.vim/backup
+dotVimDir=$HOME/.vim
+gitDotVimDir=$gitDir/.vim
+swapFileDir=$dotVimDir/backup
 dotZshDir=$gitDir/.zsh
 dotfiles=(`find $gitDir -maxdepth 1 -name '.*' -type f`)
 zshfiles=(`find $gitDir/.zsh -maxdepth 1 -type f`)
@@ -23,6 +25,7 @@ sshV2Servers=()
 
 if [ -d $gitDir ]; then
   test -d $backupDir   || mkdir -p $backupDir
+  # make ~/.vim, ~/.vim/backup
   test -d $swapFileDir || mkdir -p $swapFileDir
 
   for dotfile in ${dotfiles[@]##*/}; do
@@ -37,6 +40,14 @@ if [ -d $gitDir ]; then
   test -d $sshDir || mkdir -p $sshDir1
   echo ${sshForwardingServers[@]} | grep "`hostname`" > /dev/null && ln -fs $sshForwardingConfigFile $sshConfigFile
   echo ${sshV2Servers[@]} | grep "`hostname`" > /dev/null && ln -fs $sshV2ConfigFile $sshConfigFile
+
+  # vim
+  ## vundle
+  ln -fs $gitDotVimDir/vundles.vim $dotVimDir/vundles.vim
+  ## base settings
+  ln -fs $gitDotVimDir/vimrc $dotVimDir
+  ## plugin local settings
+  ln -fs $gitDotVimDir/plugin $dotVimDir
 fi
 
 if `uname -a | grep Darwin > /dev/null 2>&1 -o type $HOME/local/bin/zsh > /dev/null 2>&1`; then
