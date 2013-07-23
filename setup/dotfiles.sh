@@ -12,6 +12,7 @@ dotfiles=(`find $gitDir -maxdepth 1 -name '.*' -type f`)
 zshfiles=(`find $gitDir/.zsh -maxdepth 1 -type f`)
 gitConfigDir=`.git`
 gitConfigFile='config'
+dotTerminfo='.terminfo'
 
 # ~/.ssh/config設定
 sshDir=$HOME/.ssh1
@@ -48,6 +49,10 @@ if [ -d $gitDir ]; then
   ln -fs $gitDotVimDir/vimrc $dotVimDir
   ## plugin local settings
   ln -fs $gitDotVimDir/plugin $dotVimDir
+
+  # terminfo
+  terminfo=$gitDir/$dotTerminfo/xterm-256color.darwin.tic
+  test "`uname`" = "Darwin" -a -e $terminfo && tic -o $HOME/$dotTerminfo $terminfo
 fi
 
 if `uname -a | grep Darwin > /dev/null 2>&1 -o type $HOME/local/bin/zsh > /dev/null 2>&1`; then
