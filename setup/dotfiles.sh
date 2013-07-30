@@ -44,15 +44,24 @@ if [ -d $gitDir ]; then
 
   # vim
   ## vundle
-  ln -fs $gitDotVimDir/vundles.vim $dotVimDir/vundles.vim
+  if [ "`uname`" = "Darwin" ]; then
+    type git > /dev/null 2>&1 && {
+      test ! -e "$dotVimDir/bundle/vundle" && git clone https://github.com/gmarik/vundle.git $dotVimDir/bundle/vundle
+      ln -fs $gitDotVimDir/vundles.vim $dotVimDir/vundles.vim
+    }
+  fi
   ## base settings
   ln -fs $gitDotVimDir/vimrc $dotVimDir
   ## plugin local settings
   ln -fs $gitDotVimDir/plugin $dotVimDir
 
   # terminfo
-  terminfo=$gitDir/$dotTerminfo/xterm-256color.darwin.tic
-  test "`uname`" = "Darwin" -a -e $terminfo && tic -o $HOME/$dotTerminfo $terminfo
+  type infocmp > /dev/null 2>&1 && type tic > /dev/null 2>&1 && {
+    tmpTerminfo=xterm-256color.terminfo
+    infocmp xterm-256color | sed -e 's/[rs]mcup.*,//g' > $tmpTerminfo
+    tic -o $HOME/$dotTerminfo $tmpTerminfo
+    rm -f $tmpTerminfo
+  }
 fi
 
 if `uname -a | grep Darwin > /dev/null 2>&1 -o type $HOME/local/bin/zsh > /dev/null 2>&1`; then
