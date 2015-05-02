@@ -19,8 +19,11 @@ phpcomplete_extended_symfony="phpcomplete-extended-symfony/autoload/phpcomplete_
 # php-getter-setter.vim
 php_getter_setter="php-getter-setter.vim/ftplugin/php_getset.vim"
 
+# easymotion
+easymotion="vim-easymotion/autoload/EasyMotion.vim"
+
 # override all
-for override in "$unite_tag" "$phpcomplete_extended" "$phpcomplete_extended_symfony" "$php_getter_setter"; do
+for override in "$unite_tag" "$phpcomplete_extended" "$phpcomplete_extended_symfony" "$php_getter_setter" "$easymotion"; do
   if [ -f "${dotVimBundleDir}/${override}" ]; then
     mv "${dotVimBundleDir}/${override}" "${dotVimBundleDir}/${override}.org"
     ln -fs "${gitDotVimBundleDir}/${$override}" "${$dotVimBundleDir}/${override}"
