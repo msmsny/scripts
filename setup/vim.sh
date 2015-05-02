@@ -28,7 +28,7 @@ overrides=(
   "vim-easymotion/autoload/EasyMotion.vim"
 
   # quickrun
-  "vim-quickrun/autoload/quickrun/outputter/buffered_php.vim"
+  "vim-quickrun/autoload/quickrun/outputter/success_messages.vim"
 )
 
 # override all
