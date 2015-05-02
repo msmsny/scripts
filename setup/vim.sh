@@ -29,6 +29,9 @@ overrides=(
 
   # quickrun
   "vim-quickrun/autoload/quickrun/outputter/success_messages.vim"
+
+  # shabadou
+  "shabadou.vim/autoload/quickrun/hook/reload.vim"
 )
 
 # override all
