@@ -32,6 +32,9 @@ overrides=(
 
   # shabadou
   "shabadou.vim/autoload/quickrun/hook/reload.vim"
+
+  # quickfixstatus
+  "quickfixstatus/plugin/quickfixstatus.vim"
 )
 
 # override all
