@@ -27,14 +27,17 @@ overrides=(
   # easymotion
   "vim-easymotion/autoload/EasyMotion.vim"
 
+  # quickfixstatus
+  "quickfixstatus/plugin/quickfixstatus.vim"
+)
+
+# ディレクトリがあれば置く
+placements=(
   # quickrun
   "vim-quickrun/autoload/quickrun/outputter/success_messages.vim"
 
   # shabadou
   "shabadou.vim/autoload/quickrun/hook/reload.vim"
-
-  # quickfixstatus
-  "quickfixstatus/plugin/quickfixstatus.vim"
 )
 
 # override all
@@ -44,5 +47,12 @@ for override in ${overrides[@]}; do
       mv "${dotVimBundleDir}/${override}" "${dotVimBundleDir}/${override}.org"
     fi
     ln -fs "${gitDotVimBundleDir}/${override}" "${dotVimBundleDir}/${override}"
+  fi
+done
+
+# placement
+for placement in ${placements[@]}; do
+  if [ -d "${dotVimBundleDir}/${placement%/*}" ]; then
+    ln -fs "${gitDotVimBundleDir}/${placement}" "${dotVimBundleDir}/${placement}"
   fi
 done
