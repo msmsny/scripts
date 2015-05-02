@@ -26,6 +26,9 @@ overrides=(
 
   # easymotion
   "vim-easymotion/autoload/EasyMotion.vim"
+
+  # quickrun
+  "vim-quickrun/autoload/quickrun/outputter/buffered_php.vim"
 )
 
 # override all
