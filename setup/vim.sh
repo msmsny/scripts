@@ -43,6 +43,6 @@ for override in ${overrides[@]}; do
     if [ ! -L "${dotVimBundleDir}/${override}" ]; then
       mv "${dotVimBundleDir}/${override}" "${dotVimBundleDir}/${override}.org"
     fi
-    ln -fs "${gitDotVimBundleDir}/${$override}" "${$dotVimBundleDir}/${override}"
+    ln -fs "${gitDotVimBundleDir}/${override}" "${dotVimBundleDir}/${override}"
   fi
 done
