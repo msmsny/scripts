@@ -1,0 +1,5 @@
+From: account@domain.jp
+To: account@domain.jp
+Subject: __subject__
+
+__contents__
