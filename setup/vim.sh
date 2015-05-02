@@ -15,9 +15,11 @@ overrides=(
   # phpcomplete-extended
   "phpcomplete-extended/autoload/phpcomplete_extended.vim"
   "phpcomplete-extended/plugin/phpcomplete_extended.vim"
+  "phpcomplete-extended/bin/IndexGenerator.php"
 
   # phpcomplete-extended-symfony
   "phpcomplete-extended-symfony/autoload/phpcomplete_extended/symfony.vim"
+  "phpcomplete-extended-symfony/bin/symfony.php"
 
   # php-getter-setter.vim
   "php-getter-setter.vim/ftplugin/php_getset.vim"
