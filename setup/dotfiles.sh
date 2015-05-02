@@ -5,7 +5,9 @@
 gitDir=$HOME/git/dotfiles
 backupDir=$HOME/work/backup/dotfiles
 dotVimDir=$HOME/.vim
+dotConfig=$HOME/.config
 gitDotVimDir=$gitDir/.vim
+gitDotConfig=$gitDir/.config
 swapFileDir=$dotVimDir/backup
 dotZshDir=$gitDir/.zsh
 dotfiles=(`find $gitDir -maxdepth 1 -name '.*' -type f`)
@@ -62,6 +64,9 @@ if [ -d $gitDir ]; then
     tic -o $HOME/$dotTerminfo $tmpTerminfo
     rm -f $tmpTerminfo
   }
+
+  # peco
+  ln -fs $gitDotConfig $dotConfig
 fi
 
 if `uname -a | grep Darwin > /dev/null 2>&1 -o type $HOME/local/bin/zsh > /dev/null 2>&1`; then
